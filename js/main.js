@@ -11,22 +11,32 @@ revealEls.forEach(el=>io.observe(el));
 // Mobile menu
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-header nav');
-const menuOverlay = document.querySelector('.menu-overlay');
-if(toggle && menuOverlay){
+let menuOverlay = document.querySelector('.menu-overlay');
+
+// Create overlay if it doesn't exist
+if(toggle && !menuOverlay){
+  menuOverlay = document.createElement('div');
+  menuOverlay.className = 'menu-overlay';
+  document.body.appendChild(menuOverlay);
+}
+
+if(toggle && nav){
   toggle.addEventListener('click',()=> {
     nav.classList.toggle('open');
     toggle.classList.toggle('active');
-    menuOverlay.classList.toggle('active');
+    if(menuOverlay) menuOverlay.classList.toggle('active');
     document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
   });
 
   // Close menu when clicking overlay
-  menuOverlay.addEventListener('click', ()=> {
-    nav.classList.remove('open');
-    toggle.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  });
+  if(menuOverlay){
+    menuOverlay.addEventListener('click', ()=> {
+      nav.classList.remove('open');
+      toggle.classList.remove('active');
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
 
   // Close menu when clicking a nav link
   const navLinks = nav.querySelectorAll('a');
@@ -34,7 +44,7 @@ if(toggle && menuOverlay){
     link.addEventListener('click', ()=> {
       nav.classList.remove('open');
       toggle.classList.remove('active');
-      menuOverlay.classList.remove('active');
+      if(menuOverlay) menuOverlay.classList.remove('active');
       document.body.style.overflow = '';
     });
   });
