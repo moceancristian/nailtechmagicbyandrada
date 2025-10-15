@@ -27,10 +27,10 @@ a{color:var(--text);text-decoration:none}
 .site-header nav{display:flex;gap:1rem;align-items:center}
 .site-header nav a{opacity:.85}
 .site-header nav a:hover{opacity:1}
-.btn{padding:.75rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.15);display:inline-flex;align-items:center;gap:.5rem;transition:transform .15s ease, background .2s ease;margin:.25rem}
+.btn{padding:.75rem 1rem;border-radius:999px;border:1px solid var(--primary);display:inline-flex;align-items:center;gap:.5rem;transition:transform .15s ease, background .2s ease;margin:.25rem}
 .btn:hover{transform:translateY(-1px)}
 .btn.primary{background:linear-gradient(135deg,var(--primary),var(--primary-2));border:none;}
-.btn.ghost{background:transparent; color: white}
+.btn.ghost{background:transparent; color: var(--primary)}
 .btn.white{background:#fff;color:#111}
 
 .nav-toggle{display:none;background:transparent;border:0;gap:4px;flex-direction:column}
