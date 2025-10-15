@@ -1,7 +1,27 @@
 
+// Fix viewport height for mobile browsers
+function setVH() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Set initially and on resize/orientation change
+setVH();
+window.addEventListener('resize', setVH);
+window.addEventListener('orientationchange', setVH);
+
 // Header scroll effect
 const header = document.querySelector('.site-header');
 if(header){
+  // Ensure header is always visible
+  function adjustHeader() {
+    const rect = header.getBoundingClientRect();
+    if (rect.top < 0) {
+      header.style.transform = 'translateY(0)';
+      header.style.position = 'fixed';
+    }
+  }
+
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
@@ -10,7 +30,12 @@ if(header){
     } else {
       header.classList.remove('scrolled');
     }
+
+    adjustHeader();
   });
+
+  window.addEventListener('resize', adjustHeader);
+  adjustHeader();
 }
 
 // Reveal on scroll
