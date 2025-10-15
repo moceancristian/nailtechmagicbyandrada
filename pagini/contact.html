@@ -13,10 +13,30 @@
 <script defer src="../js/main.js"></script>
 <link rel="icon" href="../assets/logo-new.png">
 
+<style>
+  /* Hide content until font is loaded */
+  body {
+    font-family: "Playfair Display", serif;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+</style>
     <title>Contact — NailTech Magic by Andrada</title>
   </head>
   <body>
-    
+<script>
+  if (document.fonts) {
+    document.fonts.ready.then(() => {
+      document.body.style.opacity = '1';
+    });
+  } else {
+    // Fallback if FontFaceSet API is not supported
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  }
+</script>
+
 <header class="site-header">
   <div class="container nav-wrap">
     <a class="brand" href="../index.html"><img alt="NailTech Magic by Andrada logo" src="../assets/logo-new.png"></a>
@@ -32,6 +52,8 @@
     <button class="nav-toggle" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
   </div>
 </header>
+
+<div class="menu-overlay"></div>
 
     <main class="section">
       <div class="container grid-2">
