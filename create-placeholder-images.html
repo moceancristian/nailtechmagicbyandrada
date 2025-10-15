@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Placeholder Images</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 { color: #7e57c2; }
+    .canvas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+    }
+    canvas {
+      width: 100%;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+    }
+    button {
+      background: #7e57c2;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+    }
+    button:hover {
+      background: #6a47b0;
+    }
+    .instructions {
+      background: #f0f0f0;
+      padding: 15px;
+      border-radius: 4px;
+      margin: 20px 0;
+    }
+    .instructions ol {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Instagram Gallery Placeholder Generator</h1>
+
+    <div class="instructions">
+      <h3>Quick Instructions:</h3>
+      <ol>
+        <li>Click "Generate Placeholder Images" below</li>
+        <li>Right-click each image and "Save Image As..."</li>
+        <li>Save them in <code>assets/gallery/</code> as <code>post1.jpg</code>, <code>post2.jpg</code>, etc.</li>
+        <li>Later, replace with real Instagram images</li>
+      </ol>
+    </div>
+
+    <button onclick="generatePlaceholders()">Generate Placeholder Images</button>
+
+    <div class="canvas-grid" id="canvasGrid"></div>
+
+    <div class="instructions">
+      <h3>To Add Real Instagram Images:</h3>
+      <ol>
+        <li>Go to your Instagram: <a href="https://www.instagram.com/nailtech_magic_by_andrada/" target="_blank">@nailtech_magic_by_andrada</a></li>
+        <li>Open your 6 most recent posts</li>
+        <li>Right-click each image → "Save image as..." → Save in <code>assets/gallery/</code></li>
+        <li>Name them: post1.jpg, post2.jpg, post3.jpg, post4.jpg, post5.jpg, post6.jpg</li>
+        <li>Update the Instagram post URLs in <code>index.html</code> (lines 103-143)</li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    function generatePlaceholders() {
+      const grid = document.getElementById('canvasGrid');
+      grid.innerHTML = '';
+
+      const colors = [
+        ['#7e57c2', '#b388ff'],
+        ['#d4af37', '#f4d06f'],
+        ['#7e57c2', '#d4af37'],
+        ['#b388ff', '#7e57c2'],
+        ['#f4d06f', '#d4af37'],
+        ['#9575cd', '#b388ff']
+      ];
+
+      const nailDesigns = [
+        'French\nManichiură',
+        'Gel\nPolish',
+        'Artă\n3D',
+        'Chrome\nNails',
+        'Construcție\nGel',
+        'Manichiură\nRusească'
+      ];
+
+      for (let i = 0; i < 6; i++) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 640;
+        canvas.height = 640;
+        const ctx = canvas.getContext('2d');
+
+        // Gradient background
+        const gradient = ctx.createLinearGradient(0, 0, 640, 640);
+        gradient.addColorStop(0, colors[i][0]);
+        gradient.addColorStop(1, colors[i][1]);
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 640, 640);
+
+        // Add decorative circles
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.beginPath();
+        ctx.arc(160, 160, 120, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(480, 480, 100, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Add text
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+        ctx.font = 'bold 48px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        const lines = nailDesigns[i].split('\n');
+        lines.forEach((line, index) => {
+          ctx.fillText(line, 320, 280 + (index * 60));
+        });
+
+        // Add logo text at bottom
+        ctx.font = '24px Arial';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fillText('NailTech Magic', 320, 580);
+
+        grid.appendChild(canvas);
+      }
+    }
+
+    // Auto-generate on load
+    window.onload = generatePlaceholders;
+  </script>
+</body>
+</html>
