@@ -11,8 +11,33 @@ revealEls.forEach(el=>io.observe(el));
 // Mobile menu
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-header nav');
-if(toggle){
-  toggle.addEventListener('click',()=> nav.classList.toggle('open'));
+const menuOverlay = document.querySelector('.menu-overlay');
+if(toggle && menuOverlay){
+  toggle.addEventListener('click',()=> {
+    nav.classList.toggle('open');
+    toggle.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Close menu when clicking overlay
+  menuOverlay.addEventListener('click', ()=> {
+    nav.classList.remove('open');
+    toggle.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  // Close menu when clicking a nav link
+  const navLinks = nav.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', ()=> {
+      nav.classList.remove('open');
+      toggle.classList.remove('active');
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
 }
 
 // Year
