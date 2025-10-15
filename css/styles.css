@@ -145,7 +145,7 @@ a{color:var(--text);text-decoration:none}
   .site-header nav{display:none;position:absolute;top:64px;right:4%;background:#f8f5f0;border:1px solid rgba(212,200,186,.4);border-radius:14px;padding:.8rem;flex-direction:column}
   .nav-toggle{display:flex}
   .site-header nav.open{display:flex}
-  .parallax-section{background-attachment:fixed;background-position:center center;padding:6rem 0 6rem}
+  .parallax-section{background-attachment:fixed;background-position:center center;padding:6rem 0 6rem;background-size: auto;background-repeat: space;}
   .parallax-inner{display:flex;justify-content:center;text-align:center}
   .parallax-text{text-align:center;max-width:100%}
   .parallax-text .cta-row{justify-content:center}
