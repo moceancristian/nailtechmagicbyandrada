@@ -9,6 +9,7 @@
   --card:#f8f5f0;
   --glass: rgba(212,200,186,0.15);
   --white:#fff;
+  --vh: 1vh;
 }
 
 *{box-sizing:border-box}
