@@ -51,7 +51,7 @@ a{color:var(--text);text-decoration:none}
 .orb-1{background: radial-gradient(50% 50% at 30% 30%, #7e57c2 0%, transparent 60%)}
 .orb-2{background: radial-gradient(50% 50% at 70% 70%, #d4af37 0%, transparent 60%)}
 
-.parallax-section{position:relative;isolation:isolate;padding:10rem 0 10rem;overflow:hidden;background-image:url('../assets/gallery/gallery24.png');background-attachment:fixed;background-position:center -350px;background-size:cover;background-repeat:no-repeat}
+.parallax-section{position:relative;isolation:isolate;padding:10rem 0 9rem;overflow:hidden;background-image:url('../assets/gallery/gallery24.png');background-attachment:fixed;background-position:center -350px;background-size:cover;background-repeat:no-repeat}
 .parallax-overlay{position:absolute;inset:0;background:linear-gradient(135deg, rgb(0 0 0 / 40%), rgb(213 208 223 / 35%));z-index:1}
 .parallax-inner{position:relative;z-index:2;display:flex;justify-content:flex-start;align-items:center}
 .parallax-text{color:#fff}
