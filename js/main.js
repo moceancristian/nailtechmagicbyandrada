@@ -168,3 +168,152 @@ class Lightbox {
 if (document.querySelector('.gallery-item')) {
   new Lightbox();
 }
+
+// GDPR Cookie Consent
+class GDPRConsent {
+  constructor() {
+    this.modal = document.getElementById('gdpr-modal');
+    this.settingsModal = document.getElementById('gdpr-settings-modal');
+    this.acceptBtn = document.getElementById('gdpr-accept');
+    this.settingsBtn = document.getElementById('gdpr-settings');
+    this.closeBtn = document.getElementById('gdpr-close');
+    this.saveBtn = document.getElementById('gdpr-save');
+    this.acceptAllBtn = document.getElementById('gdpr-accept-all');
+    this.analyticsCheckbox = document.getElementById('gdpr-analytics');
+
+    this.init();
+  }
+
+  init() {
+    // Check if consent has already been given
+    const consent = localStorage.getItem('gdpr-consent');
+
+    if (!consent) {
+      // Show modal after a short delay
+      setTimeout(() => {
+        this.showModal();
+      }, 1000);
+    } else {
+      // Load saved preferences
+      const preferences = JSON.parse(consent);
+      if (preferences.analytics) {
+        this.enableAnalytics();
+      }
+    }
+
+    // Event listeners
+    if (this.acceptBtn) {
+      this.acceptBtn.addEventListener('click', () => this.acceptEssential());
+    }
+
+    if (this.settingsBtn) {
+      this.settingsBtn.addEventListener('click', () => this.openSettings());
+    }
+
+    if (this.closeBtn) {
+      this.closeBtn.addEventListener('click', () => this.closeSettings());
+    }
+
+    if (this.saveBtn) {
+      this.saveBtn.addEventListener('click', () => this.savePreferences());
+    }
+
+    if (this.acceptAllBtn) {
+      this.acceptAllBtn.addEventListener('click', () => this.acceptAll());
+    }
+  }
+
+  showModal() {
+    if (this.modal) {
+      this.modal.classList.add('active');
+    }
+  }
+
+  hideModal() {
+    if (this.modal) {
+      this.modal.classList.remove('active');
+    }
+  }
+
+  openSettings() {
+    this.hideModal();
+    if (this.settingsModal) {
+      this.settingsModal.classList.add('active');
+
+      // Load current preferences
+      const consent = localStorage.getItem('gdpr-consent');
+      if (consent) {
+        const preferences = JSON.parse(consent);
+        if (this.analyticsCheckbox) {
+          this.analyticsCheckbox.checked = preferences.analytics || false;
+        }
+      }
+    }
+  }
+
+  closeSettings() {
+    if (this.settingsModal) {
+      this.settingsModal.classList.remove('active');
+    }
+    // Show main modal again if no consent has been saved
+    const consent = localStorage.getItem('gdpr-consent');
+    if (!consent) {
+      this.showModal();
+    }
+  }
+
+  acceptEssential() {
+    const preferences = {
+      essential: true,
+      analytics: false,
+      timestamp: new Date().toISOString()
+    };
+
+    localStorage.setItem('gdpr-consent', JSON.stringify(preferences));
+    this.hideModal();
+  }
+
+  acceptAll() {
+    const preferences = {
+      essential: true,
+      analytics: true,
+      timestamp: new Date().toISOString()
+    };
+
+    localStorage.setItem('gdpr-consent', JSON.stringify(preferences));
+    this.enableAnalytics();
+
+    if (this.settingsModal) {
+      this.settingsModal.classList.remove('active');
+    }
+    this.hideModal();
+  }
+
+  savePreferences() {
+    const preferences = {
+      essential: true,
+      analytics: this.analyticsCheckbox ? this.analyticsCheckbox.checked : false,
+      timestamp: new Date().toISOString()
+    };
+
+    localStorage.setItem('gdpr-consent', JSON.stringify(preferences));
+
+    if (preferences.analytics) {
+      this.enableAnalytics();
+    }
+
+    if (this.settingsModal) {
+      this.settingsModal.classList.remove('active');
+    }
+    this.hideModal();
+  }
+
+  enableAnalytics() {
+    // Placeholder for analytics initialization
+    // Add your analytics code here (Google Analytics, etc.)
+    console.log('Analytics enabled');
+  }
+}
+
+// Initialize GDPR consent
+new GDPRConsent();
