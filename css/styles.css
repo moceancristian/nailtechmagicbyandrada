@@ -12,9 +12,44 @@
   --vh: 1vh;
 }
 
+/* Local Playfair Display font - preloaded for instant rendering */
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../assets/fonts/playfair-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../assets/fonts/playfair-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../assets/fonts/playfair-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../assets/fonts/playfair-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Playfair Display",serif,system-ui,Segoe UI,Roboto,Arial,sans-serif;scroll-behavior:smooth;overflow-x:hidden}
-body{padding-top:100px}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Playfair Display",Georgia,serif;scroll-behavior:smooth;overflow-x:hidden}
+
+/* Font rendering optimization */
+body{padding-top:100px;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 img{max-width:100%;display:block}
 a{color:var(--text);text-decoration:none}
 .container{width:min(1100px,92%);margin-inline:auto}
