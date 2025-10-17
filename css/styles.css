@@ -258,6 +258,7 @@ a{color:var(--text);text-decoration:none}
   .parallax-section{background-attachment:inherit;background-position:center 10%;padding:12rem 0 12rem;background-size:243%}
   .parallax-text{text-align:left}
   .parallax-text .hero-header{flex-direction:column-reverse;align-items:flex-start;gap:0}
+  .parallax-text .cta-row{justify-content:space-between}
   .rating-stamp{position:absolute;top:-10rem;right:1.5rem;transform:none;width:130px;height:130px;opacity:0;animation:stampFadeInMobile 1s ease 0.5s forwards}
   .stamp-stars{font-size:.95rem}
   .stamp-rating{font-size:1.4rem}
