@@ -1,3 +1,14 @@
+// WebP Support Detection
+(function() {
+  const webpTest = new Image();
+  webpTest.onload = webpTest.onerror = function() {
+    const hasWebP = webpTest.height === 2;
+    if (hasWebP) {
+      document.documentElement.classList.add('webp');
+    }
+  };
+  webpTest.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+})();
 
 // Header scroll effect
 const header = document.querySelector('.site-header');

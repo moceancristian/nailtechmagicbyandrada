@@ -26,7 +26,8 @@ a{color:var(--text);text-decoration:none}
 .site-header.scrolled{background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.15);border-bottom:2px solid var(--accent)}
 .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0}
 .brand{display:flex;align-items:center;gap:.6rem;font-weight:600}
-.brand img{height:80px;object-fit:contain;border-radius:8px;}
+.brand img,.brand picture{height:80px;}
+.brand img{object-fit:contain;border-radius:8px;height:auto;max-height:80px;width:auto;}
 .site-header nav{display:flex;gap:1rem;align-items:center}
 .site-header nav a{opacity:.85}
 .site-header nav a:hover{opacity:1}
@@ -58,6 +59,9 @@ a{color:var(--text);text-decoration:none}
 .orb-2{background: radial-gradient(50% 50% at 70% 70%, #d4af37 0%, transparent 60%)}
 
 .parallax-section{position:relative;isolation:isolate;padding:10rem 0 9rem;overflow:hidden;background-image:url('../assets/gallery/gallery24.png');background-attachment:fixed;background-position:center -150px;background-size:cover;background-repeat:no-repeat}
+@supports (background-image: url('../assets/gallery/gallery24.webp')) {
+  .webp .parallax-section{background-image:url('../assets/gallery/gallery24.webp')}
+}
 .parallax-overlay{position:absolute;inset:0;background:linear-gradient(135deg, rgb(0 0 0 / 40%), rgb(213 208 223 / 35%));z-index:1}
 .parallax-inner{position:relative;z-index:2;display:flex;justify-content:flex-start;align-items:center}
 .parallax-text{color:#fff}
@@ -97,7 +101,8 @@ a{color:var(--text);text-decoration:none}
 
 .site-footer{border-top:1px solid rgba(212,200,186,.3);padding:2rem 0 1rem;background:#e8e3dd}
 .footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:1rem;align-items:start}
-.footer-brand img{height:80px;border-radius:10px;min-width: 192px;object-fit:contain}
+.footer-brand picture{display:block;}
+.footer-brand img{height:auto;max-height:80px;border-radius:10px;width:auto;object-fit:contain}
 .footer-grid h4{margin:.2rem 0 .6rem}
 .footer-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
 .footer-grid .social a{opacity:.9}

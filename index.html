@@ -48,9 +48,14 @@
   <link rel="manifest" href="assets/favicons/site.webmanifest" />
   <link rel="stylesheet" href="css/styles.css">
   <script defer src="js/main.js"></script>
+
+  <!-- Optimized Google Fonts loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </noscript>
 
   <style>
     /* Hide content until font is loaded */
@@ -192,7 +197,12 @@
   </script>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="/"><img alt="NailTech Magic by Andrada - Studio Manichiură Baciu | Cluj" src="assets/logo-new.png"></a>
+      <a class="brand" href="/">
+        <picture>
+          <source srcset="assets/optimized/logo-header.webp" type="image/webp">
+          <img alt="NailTech Magic by Andrada - Studio Manichiură Baciu | Cluj" src="assets/optimized/logo-header.png" width="400" height="167" loading="eager">
+        </picture>
+      </a>
       <nav>
         <a href="index.html">Acasă</a>
         <a href="pagini/servicii.html">Servicii & Prețuri</a>
@@ -333,32 +343,44 @@
         <div class="gallery-grid">
           <!-- Gallery images with lightbox - click to view full-screen -->
 
-          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post1.jpg')"
+          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post1.webp')"
+            data-webp="assets/gallery/post1.webp"
+            data-fallback="assets/gallery/post1.jpg"
             aria-label="Lucrare manichiură - Design unghii profesional">
             <div class="gallery-overlay"><span>Click pentru mărit</span></div>
           </div>
 
-          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post2.jpg')"
+          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post2.webp')"
+            data-webp="assets/gallery/post2.webp"
+            data-fallback="assets/gallery/post2.jpg"
             aria-label="Manichiură rusească - Exemple de lucrări">
             <div class="gallery-overlay"><span>Click pentru mărit</span></div>
           </div>
 
-          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post3.jpg')"
+          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post3.webp')"
+            data-webp="assets/gallery/post3.webp"
+            data-fallback="assets/gallery/post3.jpg"
             aria-label="Gel polish - Manichiură elegantă și durabilă">
             <div class="gallery-overlay"><span>Click pentru mărit</span></div>
           </div>
 
-          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post4.jpg')"
+          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post4.webp')"
+            data-webp="assets/gallery/post4.webp"
+            data-fallback="assets/gallery/post4.jpg"
             aria-label="Nail art personalizat - Design unic">
             <div class="gallery-overlay"><span>Click pentru mărit</span></div>
           </div>
 
-          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post5.jpg')"
+          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post5.webp')"
+            data-webp="assets/gallery/post5.webp"
+            data-fallback="assets/gallery/post5.jpg"
             aria-label="Manichiură profesională - Finisaj impecabil">
             <div class="gallery-overlay"><span>Click pentru mărit</span></div>
           </div>
 
-          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post6.jpg')"
+          <div class="gallery-item reveal" style="background-image: url('assets/gallery/post6.webp')"
+            data-webp="assets/gallery/post6.webp"
+            data-fallback="assets/gallery/post6.jpg"
             aria-label="Studio manichiură Cluj - Exemple lucrări recente">
             <div class="gallery-overlay"><span>Click pentru mărit</span></div>
           </div>
@@ -382,7 +404,10 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <img src="assets/logo-new.png" alt="NailTech Magic by Andrada - Logo Studio Manichiură" />
+        <picture>
+          <source srcset="assets/optimized/logo-footer.webp" type="image/webp">
+          <img src="assets/optimized/logo-footer.png" alt="NailTech Magic by Andrada - Logo Studio Manichiură" width="300" height="125" loading="lazy" />
+        </picture>
         <p>Îngrijire elegantă, precisă și sigură. Doar cu programare.</p>
       </div>
       <div>
