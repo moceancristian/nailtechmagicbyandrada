@@ -102,8 +102,8 @@ a{color:var(--text);text-decoration:none}
 .parallax-text h1 span{color:var(--accent);font-weight:600;letter-spacing:.04em;text-shadow:0 2px 8px rgba(255,255,255,1)}
 .parallax-text p{color:#2a2a2a;max-width:55ch;text-shadow:0 2px 8px rgba(255,255,255,1)}
 .parallax-text .cta-row{display:flex;gap:1rem;margin:1.5rem 0;flex-wrap:wrap}
-.parallax-text .cta-row .btn.primary{padding-left:1.44rem;padding-right:1.44rem;width:154px;white-space:nowrap}
-.parallax-text .cta-row .btn.ghost{width:98px}
+.parallax-text .cta-row .btn.primary{padding-left:1.44rem;padding-right:1.44rem;width:154px;white-space:nowrap;text-align:center;display:inline-block}
+.parallax-text .cta-row .btn.ghost{width:98px;text-align:center;display:inline-block}
 .parallax-art{position:relative;z-index:10}
 /* Rating Stamp */
 .rating-stamp{position:absolute;top:-50%;right:0;width:160px;height:160px;flex-shrink:0;filter:drop-shadow(0 10px 20px rgba(184,153,104,.4));opacity:0;animation:stampFadeIn 1s ease 0.5s forwards}
